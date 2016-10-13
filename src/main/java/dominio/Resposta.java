@@ -48,35 +48,15 @@ public class Resposta {
 	/**
 	 * Atributo que guarda o Aluno que respondeu
 	 */
-	@ManyToMany
-	@JoinTable(name="resposta_aluno",
-	joinColumns={@JoinColumn(name="id_resposta", referencedColumnName="id_resposta")},
-	inverseJoinColumns={@JoinColumn(name="id_aluno",
-	referencedColumnName="id_aluno")})
+	@ManyToMany(mappedBy="respostas_aluno")
 	private Aluno aluno;
 	
 	/**
 	 * Atributo que guarda o Monitor que respondeu
 	 */
-	@ManyToMany
-	@JoinTable(name="resposta_monitor",
-	joinColumns={@JoinColumn(name="id_resposta", referencedColumnName="id_resposta")},
-	inverseJoinColumns={@JoinColumn(name="id_monitor",
-	referencedColumnName="id_monitor")})
+	
+	@ManyToMany(mappedBy="respostas_monitor")
 	private Monitor monitor;
-	
-	/**
-	 * Atributo que guarda a Disciplina da Resposta
-	 */
-	@ManyToOne
-	private Disciplina disciplina;
-	
-	/**
-	 * Atributo que guarda a Pergunta da Resposta
-	 */
-	
-	@ManyToOne
-	private Pergunta pergunta;
 	
 	/**
 	 * Construtor padrão da classe
@@ -168,35 +148,6 @@ public class Resposta {
 	public void setMonitor(Monitor monitor) {
 		this.monitor = monitor;
 	}
-
-	/**
-	 * @return the disciplina
-	 */
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-
-	/**
-	 * @param disciplina the disciplina to set
-	 */
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-
-	/**
-	 * @return the pergunta
-	 */
-	public Pergunta getPergunta() {
-		return pergunta;
-	}
-
-	/**
-	 * @param pergunta the pergunta to set
-	 */
-	public void setPergunta(Pergunta pergunta) {
-		this.pergunta = pergunta;
-	}
-	
 	
 
 }

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,31 +50,31 @@ public class Disciplina {
 	@Column
 	private String curso;
 	
-	// ---------------duvidas aqui----------------
+	
 	/**
 	 * Atributo que guarda a lista de alunos matriculados na
 	 * Disciplina no semestre
 	 */
-	
+	@ManyToMany(mappedBy="disciplinas_aluno")
 	private List<Aluno> alunosMatriculados;
 	
 	/**
 	 * Atributo que guarda a lista de monitores da Disciplina
 	 * no semestre
 	 */
+	
+	@ManyToMany(mappedBy="disciplinas_monitor")
 	private List<Monitor> monitores;
 	
 	/**
 	 * Atributo que guarda o professor da Disciplina
 	 */
-	private Professor professor;
+	@ManyToMany(mappedBy="disciplinas_professor")
+	private List<Professor> professores;
 	
 	@OneToMany
-	private List<Resposta> respostas;
-	
-	@OneToMany
+	@JoinColumn(name="pergunta_id")
 	private List<Pergunta> perguntas;
-	
 	
 	
 	/**
@@ -168,15 +171,15 @@ public class Disciplina {
 	/**
 	 * @return the professor
 	 */
-	public Professor getProfessor() {
-		return professor;
+	public List<Professor> getProfessor() {
+		return professores;
 	}
 
 	/**
 	 * @param professor the professor to set
 	 */
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+	public void setProfessor(List<Professor> professores) {
+		this.professores = professores;
 	}
 
 }

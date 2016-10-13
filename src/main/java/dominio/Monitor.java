@@ -41,10 +41,17 @@ public class Monitor {
 	
 	@ManyToMany
 	@JoinTable(name="monitor_disciplina",
-	joinColumns={@JoinColumn(name="id_monitor", referencedColumnName="id_monitor")},
-	inverseJoinColumns={@JoinColumn(name="id_disciplina",
-	referencedColumnName="id_disciplina")})
+	joinColumns={@JoinColumn(name="monitor_id", referencedColumnName="monitor_id")},
+	inverseJoinColumns={@JoinColumn(name="disciplina_id",
+	referencedColumnName="disciplina_id")})
 	private List<Disciplina> disciplinasMonitor;
+	
+	@ManyToMany
+	@JoinTable(name="resposta_monitor",
+	joinColumns={@JoinColumn(name="monitor_id", referencedColumnName="monitor_id")},
+	inverseJoinColumns={@JoinColumn(name="resposta_id",
+	referencedColumnName="resposta_id")})
+	private List<Resposta> respostas;
 	
 	/**
 	 * Construtor padrão da classe

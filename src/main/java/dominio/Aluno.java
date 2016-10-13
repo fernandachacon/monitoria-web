@@ -50,10 +50,17 @@ public class Aluno {
 	 */
 	@ManyToMany
 	@JoinTable(name="aluno_disciplina",
-			joinColumns={@JoinColumn(name="id_aluno", referencedColumnName="id_aluno")},
-			inverseJoinColumns={@JoinColumn(name="id_disciplina",
-			referencedColumnName="id_disciplina")})
+			joinColumns={@JoinColumn(name="aluno_id", referencedColumnName="aluno_id")},
+			inverseJoinColumns={@JoinColumn(name="disciplina_id",
+			referencedColumnName="disciplina_id")})
 	private List<Disciplina> disciplinas;
+	
+	@ManyToMany
+	@JoinTable(name="aluno_resposta",
+	joinColumns={@JoinColumn(name="aluno_id", referencedColumnName="aluno_id")},
+	inverseJoinColumns={@JoinColumn(name="resposta_id",
+	referencedColumnName="resposta_id")})
+	private List<Resposta> respostas;
 	
 	/**
 	 * Atributo que guarda a Pessoa do Aluno

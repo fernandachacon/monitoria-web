@@ -44,9 +44,9 @@ public class Professor {
 	 */
 	@ManyToMany
 	@JoinTable(name="professor_disciplina",
-			joinColumns={@JoinColumn(name="id_professor", referencedColumnName="id_professor")},
-			inverseJoinColumns={@JoinColumn(name="id_disciplina",
-			referencedColumnName="id_disciplina")})
+			joinColumns={@JoinColumn(name="professo_id", referencedColumnName="professor_id")},
+			inverseJoinColumns={@JoinColumn(name="disciplina_id",
+			referencedColumnName="disciplina_id")})
 	private List<Disciplina> disciplinas;
 
 	/**
